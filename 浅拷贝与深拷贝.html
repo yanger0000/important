@@ -33,6 +33,7 @@ let result = null;
     }
     for(let key in target){
          if(target instanceof Array || target instanceof Object){
+//         深拷贝是会拷贝所有层级的属性   如果遇到数组和对象需要再遍历.实现递归复制
               result[key] = deepclone(target[key]);
          }else{
              result[key] = target[key];
@@ -40,13 +41,13 @@ let result = null;
         }
         return result
 }
-var obj = {name:'zhangsan',age:18,setname:function () {
-    console.log('hello');
-}}
-let b =deepclone(obj);
-obj.name = 'lisi'
-console.log(obj);
-console.log(b);
+//var obj = {name:'zhangsan',age:18,setname:function () {
+//    console.log('hello');
+//}}
+//let b =deepclone(obj);
+//obj.name = 'lisi'
+//console.log(obj);
+//console.log(b);
 
 </script>
 </body>
