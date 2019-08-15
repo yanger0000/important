@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断数据类型</title>
+</head>
+<body>
+<script>
+//NaN：   undefined + undefined = NaN
+//      当判断一个不是数值型的时候为NaN
+//         NaN不等于它本身
+
+//1.   利用原型改类型
+//    function getType(data) {
+//        var result = Object.prototype.toString.call(data);
+//        return result.slice(8,-1)
+//    }
+//    console.log(getType(2));
+
+//2.   == 隐士转换
+//console.log(null === null);true
+//console.log(undefined === undefined) true
+// undefined 和 null 只有一个值就是本身
+
+//3.   A instanceof B A是否属于B的实例对象
+//如果B函数的显式原型对象在A对象的原型链上, 返回true, 否则返回false
+//console.log(Object instanceof Function) // true
+//console.log(Object instanceof Object) // true
+//console.log(Function instanceof Object) // true
+//console.log(Function instanceof Function) //  true
+//console.log(Object.__proto__ === Function.prototype);// true
+//console.log(Function.__proto__ === Object.prototype);// false
+
+
+//4.typeof判断   （typeof返回值的类型是字符串/首字母小写）
+//可以区别：Number String Boolean undefined Function
+// 不能区别： null与数组 null与对象 数组与对象
+// 一个不正确：typeof null Object
+//一个不精准; typeof  []  Object
+//一个没问题 typeof {} Object
+//5.constructor
+
+</script>
+</body>
+</html>

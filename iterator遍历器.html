@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function iterator() {
+    let index = 0;
+    let that = this;
+        if(that instanceof Array){
+           return {
+             next:() => {
+               return {
+                  value:that[index++],
+                  done:index - 1>that.length ? true : false
+               }
+             }
+           }
+        }else{
+        let keys = Object.keys(that);
+          return {
+           next:() => {
+            return {
+             value:that[keys[index++]],
+             done:index - 1>keys.length ? true : false
+            }
+           }
+          }
+        }
+    }
+    Array.prototype[Symbol.iterator] = iterator
+    Object.prototype[Symbol.iterator] = iterator
+//    let arr = [3,5,7,9,10,18];
+//    for(item of arr){
+//        console.log(item);
+//    }
+var obj = {m:2,n:3}
+for(let key of obj){
+         console.log(key)
+        }
+</script>
+</body>
+</html>
