@@ -9,12 +9,12 @@
 <input type="text" id="txt">
 <script>
     let input = document.getElementById('txt');
-     let id;
+     let timerId = 0;
     input.onkeyup = function () {
-    if(id){
-     clearTimeout(id)
+    if(timerId){
+     clearTimeout(timerId)
     }
-    id = setTimeout(function () {
+        timerId = setTimeout(function () {
         demo(input.value)
     },200)
 
