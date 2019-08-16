@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>执行上下文(也是一种特殊的对象)</title>
+</head>
+<body>
+<script>
+//    定义：js引擎在代码生成之前创建执行上下文环境（区域，范围）在栈结构中
+//    在执行上下文时window是最先压栈的
+//    栈：先进后出   队列:先进先出
+//    执行作用域的次数  1+定义函数的次数
+//    执行上下文的次数  1+调用函数的次数（重复调用也算）
+//    最终执行几次上下文环境   1--window
+//  例子 1. 这里边涉及到的知识点（递归，执行上下文）
+       console.log(i)
+        var i =1;
+        demo(i);
+        function demo(i) {
+          if(i == 4){
+            return
+          }
+          console.log("two"+i)
+          demo(i+1)
+            console.log("three"+i)
+        }
+        console.log(i)
+// 2.in （左边的属性是否从属于右边）
+      if(!(b in window)){
+        var b = 1;
+      }
+      console.log(b);
+//      解释：虽然条件不成立但是与与解析没关系。
+// 3.重点
+console.log(a);
+// 打印的是函数
+      var a = 1;
+      console.log(a);
+//     打印的是1 理由：当代码执行到37行后a的值已经被重新赋值
+      function a(a) {
+      console.log(a)
+          var a = 3;
+      }
+      a(2)
+//      报错
+//  解释：当有var和function 提升时。有两种解释 1.当声明变量和函数名相同时，只要函数定义的，变量声明的不管
+//                                             2.都看一遍，然后再找function定义的
+//  测试作用域
+        //debugger
+//        console.log(num);
+//        var  num = 1;
+//        console.log(num);
+//        function num() {
+//            console.log("我是函数里边的console.log");
+//        }
+//        num();
+</script>
+</body>
+</html>

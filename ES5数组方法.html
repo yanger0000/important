@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var str = 'acvadc';
+  // 使用数组的存储方法实现查重
+  var arr = [];
+  for(var i = 0;i<str.length;i++){
+    arr[str[i]] = (arr[str[i]])+1 || 1;
+  }
+  console.log(arr);
+  // 使用对象的存储方法实现查重
+  var obj = {};
+  for(var i = 0;i<str.length;i++){
+      key = str[i];
+      if(obj[key]){
+        obj[key]++;
+      }else{
+      obj[key] = 1;
+      }
+  }
+  for(key in obj){
+  console.log(key+'出现的次数'+obj[key]);
+  }
+//去重的方法:在这里利用了数组的一个方法(indexOf)
+// 使用原理:如果在定义的数组中没有找到该索引的值会返回 -1
+var arr = [1,2,6,1,8,2,3,1];
+// 顶一个空数组来添加新的数据
+var newarr = [];
+for(var i = 0;i<arr.length;i++){
+ if(newarr.indexOf(arr[i])<0){
+  newarr.push(arr[i]);
+ }
+}
+console.log(newarr);
+</script>
+</body>
+</html>

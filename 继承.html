@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//原型继承  实现的是真的继承
+ function Person(name,age) {
+     this.name = name;
+     this.age = age;
+ }
+ Person.prototype.test = function () {
+     console.log('好好学习')
+ }
+// Child.prototype = new Person();
+//子类的原型成为父类的实例  子类的原型成为new一个父类的构造函数 父类构造函数里边对this做了什么操作 子类都会继承
+ Child.prototype = Object.create(Person.prototype);
+// 创建一个新对象并给新的对象指定原型
+ Child.prototype.constructor = Child;
+
+ function Child(name) {
+     this.name = name;
+ }
+ var child = new Child('wade');
+ child.test();
+ console.log(child);
+// 借用构造函数假继承
+//function Person(name,age) {
+//    this.name = name;
+//    this.age = age;
+//}
+//function Child(name,age) {
+////     原本this指向的是window，需要强制修改this的指向，让this指向子类的实例对象
+////     假继承只是临时借用了父类构造函数里的代码段
+//    Person.call(this,name,age);
+//}
+//var child = new Child('kobe',18);
+//console.log(child)
+</script>
+</body>
+</html>

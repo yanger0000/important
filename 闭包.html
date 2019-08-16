@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+//     什么是闭包?  闭包是一个“容器”（也是一个特殊对象）容器里存放着本应死去（释放）的变量。容器被内部函数所引用着
+//     产生的条件？
+//          1.函数嵌套
+//          2. 内部函数引用外部函数（所牵引）的局部变量
+//          3.执行外部函数
+//           4.return返回内部函数
+//   闭包的作用
+//        1.延长外部函数局部变量的生命周期
+//        2.外部函数可以间接的使用内部函数的变量
+//   闭包的生命周期
+//   精准说法：内部函数被定义的时候立即产生闭包
+//   模糊说法：内部函数被调用时
+//   内部函数成为垃圾对象时死亡
+//   return：不使用return返回内部函数时闭包也会产生，但是当函数执行结束后执行上下文出栈 内部函数死亡（瞬间产生，瞬间死亡）
+//           使用return返回内部函数可以让闭包活下来才有意义
+//  闭包的常用场景
+//   1.把内部函数当作实参调用给外部函数
+//   2.把内部函数当作返回值给外部函数
+//例子
+//把内部函数当作返回值给外部函数
+//  function fn() {
+//  debugger
+//      var a = 1;
+//      return function fn1() {
+//      a++
+//          console.log(a);
+//      }
+//  }
+//  var f = new fn();
+//  f();
+//  内部函数闭包里面保存的是外部函数调用传入的实参
+//   function fn(msg) {
+//       setTimeout(function () {
+//           console.log(msg)
+//       },1000)
+//   }
+//   fn('我是实参')
+//面试题
+
+function fun(n, o) {
+    console.log(o)
+    return {
+        fun: function (m) {
+            return fun(m, n);
+        }
+    }
+}
+
+var a = fun(0);
+a.fun(1)
+a.fun(2) // 0
+//a.fun(3) //undefined,
+//var b = fun(0).fun(1).fun(2).fun(3).fun(50).fun(25) //undefined
+//面试题2
+//function Foo() {
+//    getName = function () { alert (1); };
+//    return this;
+//}
+//Foo.getName = function () { alert (2);};
+//Foo.prototype.getName = function () { alert (3);};
+//
+//var getName = function () { alert (4);};
+//function getName() { alert (5);}
+////请写出以下输出结果：
+//Foo.getName();
+//getName();
+//Foo().getName();
+//getName();
+//new Foo.getName();
+//new Foo().getName();
+//new new Foo().getName();
+</script>
+</body>
+</html>

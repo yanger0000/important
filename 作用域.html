@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+<script>
+// 隔离变量
+//作用域链
+// 1.查找变量，先在自身找
+//2.自身找不到。扩展向上一级查找
+//最后没找到，报错
+// 例子  c找不到的原因是不再一个嵌套里边
+        var a = 1;
+        function test1() {
+            var b = 2;
+            console.log(b,a)
+        }
+        test1()
+        function test2() {
+            var c = 3;
+            console.log(a,b,c)
+        }
+        test2()
+//2.在一个嵌套里边  查找变量时往外扩展。往上一级一级查找直到找到全局，如果没有报错
+        var a = 1;
+        function test1() {
+            var b = 2;
+            function test2() {
+                var c = 3;
+                console.log(a,b,c)
+            }
+            test2();
+        }
+        test1();
+</script>
+</body>
+</html>
