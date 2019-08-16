@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<input type="text" id="txt">
+<script>
+let txt = document.getElementById('txt');
+    addEventListener('storage',function (event) {
+          txt.value = event.newValue;
+    })
+</script>
+</body>
+</html>

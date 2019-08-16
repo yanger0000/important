@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防止节流</title>
+    <style>
+        body{
+         height: 3000px;
+        }
+    </style>
+</head>
+<body>
+</body>
+<script>
+let flag = true;
+   document.onscroll= function () {
+   if(flag){
+       console.log(1);
+       flag = false;
+       setTimeout(() => {
+        flag = true
+       },400)
+   }
+   }
+</script>
+</html>

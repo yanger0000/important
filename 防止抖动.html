@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防止抖动</title>
+</head>
+<body>
+<!--概念：延迟要执行的动作，若在延时的这段时间内。再次触发了，则取消之前开启的动作，重新计时。-->
+<input type="text" id="txt">
+<script>
+    let input = document.getElementById('txt');
+     let id;
+    input.onkeyup = function () {
+    if(id){
+     clearTimeout(id)
+    }
+    id = setTimeout(function () {
+        demo(input.value)
+    },200)
+
+    }
+    function demo(data) {
+        console.log(`${data}`);
+    }
+</script>
+</body>
+</html>

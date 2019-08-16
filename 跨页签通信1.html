@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="txt">
+<script>
+let txt = document.getElementById('txt');
+txt.onblur = function () {
+        localStorage.setItem('key',txt.value);
+    }
+
+</script>
+</body>
+</html>
