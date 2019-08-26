@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div id="test"></div>
+<button id="btn">按钮</button>
+<script type="text/javascript">
+    $('#btn').click(function () {
+        $.ajax('http://localhost:3000/demo2',{
+            method:'post',
+            data:{name:'wade',age:18},
+            success:function (data) {
+                $('#test').innerHTML = data
+            },
+            error:function (err) {
+                console.log(err);
+            }
+        })
+    })
+</script>
+</body>
+</html>
